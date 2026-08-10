@@ -145,3 +145,102 @@ Adding any of these will noticeably sharpen the output:
 - Whether existing API consumers must keep working unchanged (contract freeze) or can be updated
 - Whether reference data updates arrive via API, batch file, or upstream events
 - Java/Spring Boot version, and the database in use
+
+
+Hi Team,
+As I am joining the GIFT City initiative from the existing Web Banking Payment Transfer team, I would like to understand and clarify the Payment Transfer scope for MVP1.
+From the current requirements, I understand that GIFT City digital banking is being enabled on NITRO 7.0, with MVP1 supporting existing IN SCB customers and currencies USD, EUR and GBP. Payment Transfer is one of the key journeys under this scope.
+From a Payment Transfer perspective, I would like to clarify the following areas before we proceed with the detailed solution/design.
+1. Payment Transfer Scope
+Could we please confirm the payment/transfer types planned for GIFT City MVP1?
+Own Account Transfer
+Book Transfer / SCB-to-SCB transfer
+Local/India bank transfer
+International transfer
+Future-dated transfer
+Scheduled/recurring transfer
+Beneficiary payments
+Cross-currency transfer
+It would be helpful to have a clear MVP1 payment journey catalogue, including what is in scope and out of scope.
+2. Source and Destination Accounts
+We need to understand where a GIFT customer can transfer funds:
+GIFT account → Own GIFT account
+GIFT account → Own India SCB account
+GIFT account → Other SCB account
+GIFT account → Indian bank account
+GIFT account → International bank account
+GIFT account → GIFT account
+Also, should transfers between GIFT and India accounts be treated as book transfers, domestic payments or a different payment type?
+3. Currency Support
+MVP1 mentions USD, EUR and GBP.
+Could we clarify whether Payment Transfer supports:
+Same-currency transfers — USD → USD, EUR → EUR, GBP → GBP
+Cross-currency transfers — USD → EUR, USD → GBP, etc.
+GIFT → India transfers involving FX
+India → GIFT transfers involving FX
+If cross-currency payments are supported, we need to understand where FX rate calculation, rate locking and converted amount calculation will happen.
+4. Existing Web Banking Capability Reuse
+Since the existing Web Banking Payment Transfer capability already supports several payment journeys, could we clarify:
+Which existing Payment Transfer APIs can be reused?
+Are we extending the existing Experience/Process APIs for GIFT?
+Are GIFT-specific APIs required?
+Which existing business validations can be reused?
+Which GIFT-specific validations/rules need to be introduced?
+A Web Banking vs GIFT Payment Transfer gap analysis would help us identify the required changes.
+5. CPH Integration
+The project documentation refers to the GIFT City – CPH journey.
+Could we clarify whether:
+Existing CPH payment services will be reused for GIFT
+GIFT-specific CPH services are being introduced
+Existing payment contracts need modification
+New payment types/currencies are supported by CPH
+CPH will provide the same transaction status and error model as existing Web Banking
+6. Payment Limits and Eligibility
+We need to understand whether GIFT will use the existing Web Banking payment limits or have separate GIFT-specific limits.
+Please clarify:
+Per-transaction limits
+Daily limits
+Currency-specific limits
+Customer/account-level limits
+Payment-type-specific limits
+How limits are evaluated for cross-currency transactions
+Which system owns the limit validation
+7. Authentication / Transaction Authorisation
+Could we also confirm whether the existing Web Banking authentication and transaction authorisation framework will be reused?
+In particular:
+2FA / 3FA requirements
+Step-up authentication
+Transaction signing
+High-value transaction rules
+Any GIFT-specific authentication policies
+8. Payment Status & Lifecycle
+We should confirm whether the existing Web Banking payment lifecycle can be reused.
+For example:
+Initiated → Authenticated → Submitted → Processing → Completed
+and handling of:
+Pending / Failed / Rejected / Cancelled / Unknown Status
+It would also be important to establish the source of truth for payment status, particularly if CPH processing is asynchronous.
+9. Error Handling
+Could we align on whether the existing Web Banking Payment Transfer error standard will be reused?
+Ideally, downstream/CPH errors should be mapped to a standard Experience API error contract rather than exposing downstream-specific error codes directly to the UI.
+We should identify any new GIFT-specific:
+Validation errors
+Business errors
+Compliance/rejection errors
+Payment rejection errors
+Timeout/downstream errors
+Unknown transaction status errors
+10. Fees, FX and Payment Confirmation
+For each payment type, we also need to understand:
+Fee calculation
+FX rate and spread
+Charges displayed to the customer
+Final debit amount
+Value date
+Payment reference/transaction reference
+Confirmation/receipt requirements
+Proposed next step
+It would be useful to first agree on the Payment Transfer scope and payment/currency/corridor matrix for MVP1.
+Once this is confirmed, the Payment Transfer team can perform a Web Banking → GIFT gap analysis covering:
+Business Journey → API → Authentication → Validation/Limits → CPH → Payment Status → Error Handling → UI Response
+This will help us clearly identify what can be reused from the existing Web Banking implementation and what needs to be changed or newly developed for GIFT City.
