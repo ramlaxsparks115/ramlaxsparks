@@ -244,3 +244,13 @@ It would be useful to first agree on the Payment Transfer scope and payment/curr
 Once this is confirmed, the Payment Transfer team can perform a Web Banking → GIFT gap analysis covering:
 Business Journey → API → Authentication → Validation/Limits → CPH → Payment Status → Error Handling → UI Response
 This will help us clearly identify what can be reused from the existing Web Banking implementation and what needs to be changed or newly developed for GIFT City.
+
+Hi [CAL], thanks for the discussion and the feedback today.
+
+I understand the key expectations and the areas I need to improve. Going forward, I will ensure that I remain more focused on development, maintain the required development contribution, avoid taking ownership of requirement discussions that should be driven through the EL, and ensure proper user stories/requirements are available before proceeding.
+
+I’ll apply these learnings in the new assignment and make sure we deliver it successfully.
+
+As discussed, I would also like to request your support in moving me to a non-Payments squad under you, as I believe this will give me a good opportunity to apply these learnings and contribute effectively.
+
+Separately, I need your approval for the Power Access Token for the POC. I started the POC on Monday, and with around 1.5 months remaining, having the access soon will help me complete the POC within the timeline.
